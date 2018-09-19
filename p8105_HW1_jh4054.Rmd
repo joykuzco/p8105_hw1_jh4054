@@ -16,8 +16,10 @@ library(tidyverse)
 * Create a data frame comprised of 4 variables
 
 ```{r}
+#set seed for random number generator
 set.seed(5)
 
+#create dataframe with tibble package
 vector_df = tibble(
   vec_numeric = runif(10,0,5),
   vec_logic = vec_numeric > 2,
@@ -26,5 +28,31 @@ vector_df = tibble(
 )
 
 vector_df
+```
+###Explore means
+* Mean of numeric vector  
+```{r}
+mean(vector_df$vec_numeric)
+```
+
+* Mean of logic vector
+```{r}
+mean(vector_df$vec_logic)
+```
+
+* Mean of character vector does not work 
+```{r}
+mean(vector_df$vec_char)
+```
+    
+* Mean of factor vector does not work  
+```{r}
+mean(vector_df$vec_factor)
+```
+
+###Convert variables to numeric values
+```{r}
+as.numeric(vector_df$vec_char)
+as.numeric(vector_df$vec_factor)
 ```
 
