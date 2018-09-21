@@ -84,12 +84,14 @@ The proportion of cases in which the logical vector is true can be described by 
 #set seed for reproducibility
 set.seed(50)
 
+#create vectors for dataframe
 x = rnorm(1000)
 y = rnorm(1000)
 logic_sum = x + y > 0
 num_logic_sum = as.numeric(logic_sum)
 fac_logic_sum = as.factor(logic_sum)
 
+#bind vectors in dataframe
 prob2_df = tibble(x, y, logic_sum, num_logic_sum, fac_logic_sum)
 ```
 
