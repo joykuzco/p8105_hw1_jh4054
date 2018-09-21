@@ -3,6 +3,8 @@ title: "p8105_HW1_jh4054"
 author: "Joy Hsu"
 date: "9/19/2018"
 output: github_document
+editor_options: 
+  chunk_output_type: inline
 ---
 
 This R markdown document is for Data Science P8105 - Homework 1
@@ -69,7 +71,13 @@ fac_char_num = as.numeric(as.character(vec_fac))
 
 #Problem 2
 First, we will create a data frame `prob2_df` 
+
+The size of dataset `prob2_df` is described by `dim(prob2_df)`, which means that the dimension of the dataframe is 1000 length by 5 vectors.
+The mean of `x` is `mean(x)`.
+the median of `x` is `median(x)`.
+The proportion of cases in which the logical vector is true can be described by `sum(logic_sum, na.rm=TRUE)/1000`
 ```{r}
+#set seed for reproducibility
 set.seed(50)
 
 x = rnorm(1000)
@@ -81,8 +89,19 @@ fac_logic_sum = as.factor(logic_sum)
 prob2_df = tibble(x, y, logic_sum, num_logic_sum, fac_logic_sum)
 ```
 
-The size of dataset `prob2_df` is described by `dim(prob2_df)`, which means that the dimension of the dataframe is 1000 length by 5 vectors.
-The mean of `x` is `mean(x)`.
-the median of `x` is `median(x)`.
-The proportion of cases in which the logical vector is true can be described by `sum(logic_sum, na.rm=TRUE)`, 
+Next, we will use scatterplots to visualize the data. 
+
+Make a scatterplot of y vs x; color points using the logical variable (adding color = ... inside of  aes in your ggplot code should help). 
+Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
+
+Export your first scatterplot to your project directory using ggsave.
+
+```{r}
+plot_logic_sum = ggplot(prob2_df, aes(x = x, y = y, color = logic_sum)) + geom_point(size = 1)
+plot_num_logic = ggplot(prob2_df, aes(x = x, y = y, color = num_logic_sum)) + geom_point(size = 1)
+plot_fac_logic = ggplot(prob2_df, aes(x = x, y = y, color = fac_logic_sum)) + geom_point(size = 1)
+
+ggsave("plot_logic_sum.png", plot = plot_logic_sum)
+```
+
 
