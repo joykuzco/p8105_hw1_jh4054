@@ -73,7 +73,7 @@ We will create a data frame with
 x = rnorm(1000)
 y = rnorm(1000)
 logic_sum = x + y > 0
-num_sum = as.numeric(logic_sum)
-fac_sum = as.factor(logic_sum)
+num_logic_sum = as.numeric(logic_sum)
+fac_logic_sum = as.factor(logic_sum)
 ```
 
