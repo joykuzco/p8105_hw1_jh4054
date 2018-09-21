@@ -37,7 +37,7 @@ vec_char = c("there", "is", "an", "alien", "hiding", "behind", "the", "black", "
 vec_fac = factor(c("alien", "platypus", "alien", "platypus", "alien", "platypus", "platypus", "platypus", "platypus", "platypus"))
 ```
 
-Using the `tibble` function, I bounded the four variables in a dataframe. 
+Using the `tibble` function, I can bind the four variables in a dataframe. 
 ```{r}
 #create data frame
 prob1_df = tibble(vec_num, vec_log, vec_char, vec_fac)
@@ -52,7 +52,7 @@ mean(vec_num)
 #take the mean of logical vector
 mean(vec_log)
 
-#take the mean of charactor vector
+#take the mean of character vector
 mean(vec_char)
 
 #take the mean of factor vector
@@ -61,13 +61,13 @@ mean(vec_fac)
 
 We can convert the factor vector `vec_fac` and logical vector `vec_log` into numeric variables using the `as.numeric` function. The character vector conversion did not work and returned `NAs introduced by coercion`
 ```{r, message = F, warning = F}
-#attempt to convert variables to numeric class 
+#convert variables to numeric class 
 num_vec_log = as.numeric(vec_log)
 num_vec_char = as.numeric(vec_char)
 num_vec_fac = as.numeric(vec_fac)
 ```
 
-By converting the character variable from charactor to factor to numeric, we can successfully convert the character vector to a numeric vector. Conversion of the factor vector from factor to character to numeric failed.    
+By converting the character variable from character to factor to numeric, we can successfully convert the character vector to a numeric vector. Conversion of the factor vector from factor to character to numeric failed.    
 ```{r, message = F, warning = F}
 char_fac_num = as.numeric(as.factor(vec_char))
 fac_char_num = as.numeric(as.character(vec_fac))
@@ -79,7 +79,7 @@ First, we will create a data frame `prob2_df`
 The size of dataset `prob2_df` is described by `dim(prob2_df)`, which means that the dimension of the dataframe is 1000 length by 5 vectors.
 The mean of `x` is `mean(x)`.
 the median of `x` is `median(x)`.
-The proportion of cases in which the logical vector is true can be described by `sum(logic_sum, na.rm=TRUE)/1000`
+The proportion of cases in which the logical vector is true can be described by `sum(logic_sum, na.rm=TRUE)/1000`.
 ```{r}
 #set seed for reproducibility
 set.seed(50)
@@ -98,7 +98,6 @@ prob2_df = tibble(x, y, logic_sum, num_logic_sum, fac_logic_sum)
 Next, we will use scatterplots to visualize the data. 
 
 The datapoints in all three plots will be identical, since the numeric and factor vectors were derived from the logical vector. The plots for the logical and factor vectors are identical with a binary color legend for TRUE and FALSE. The plot for the numeric vector has a scaled color legend from 0 to 1; the plot only displays colors for values 0 and 1. 
-The scatterplots with coloration using the logic vector 
 
 ```{r}
 #create visualizations with logical, numeric, and factor vectors
@@ -108,8 +107,6 @@ plot_fac_logic = ggplot(prob2_df, aes(x = x, y = y, color = fac_logic_sum)) + ge
 
 #save plot to project directory 
 ggsave("plot_logic_sum.png", plot = plot_logic_sum)
-ggsave("plot_num_logic.png", plot = plot_num_logic)
-ggsave("plot_fac_logic.png", plot = plot_fac_logic)
 ```
 
 
