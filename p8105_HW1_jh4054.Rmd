@@ -31,13 +31,13 @@ vec_char = c("there", "is", "an", "alien", "hiding", "behind", "the", "black", "
 vec_fac = factor(c("alien", "platypus", "alien", "platypus", "alien", "platypus", "platypus", "platypus", "platypus", "platypus"))
 ```
 
-Using the "tibble" function, I bounded the four variables in a dataframe. 
+Using the `tibble` function, I bounded the four variables in a dataframe. 
 ```{r}
 #create data frame
 prob1_df = tibble(vec_num, vec_log, vec_char, vec_fac)
 ```
 
-The mean function will only work for some variables. The mean function works for the numeric variable since the inputs are already numeric. The mean function also works for the logical vector since the outputs "TRUE" and "FALSE" of the logic operator are coded as numeric values 0 and 1, respectively. The character vector "vec_char" and factor vector "vec_fac" have categorical variables which cannot be averaged numerically. Taking the mean for character and factor variables will return NAs.
+The mean function will only work for some variables. The mean function works for the numeric variable since the inputs are already numeric. The mean function also works for the logical vector since the outputs `TRUE` and `FALSE` of the logic operator are coded as numeric values 0 and 1, respectively. The character vector `vec_char` and factor vector `vec_fac` have categorical variables which cannot be averaged numerically. Taking the mean for character and factor variables will return NAs.
 
 ```{r, message = F, warning = F}
 #take the mean of numeric vector
@@ -53,7 +53,7 @@ mean(vec_char)
 mean(vec_fac)
 ```
 
-We can convert the factor vector "vec_fac" and logical vector "vec_log" into numeric variables using the "as.numeric" function. The character vector conversion did not work and returned "NAs introduced by coercion"
+We can convert the factor vector `vec_fac` and logical vector `vec_log` into numeric variables using the `as.numeric` function. The character vector conversion did not work and returned `NAs introduced by coercion`
 ```{r, message = F, warning = F}
 #attempt to convert variables to numeric class 
 num_vec_log = as.numeric(vec_log)
@@ -68,12 +68,16 @@ fac_char_num = as.numeric(as.character(vec_fac))
 ```
 
 #Problem 2
-We will create a data frame with 
+First, we will create a data frame `r prob2_df` 
 ```{r}
 x = rnorm(1000)
 y = rnorm(1000)
 logic_sum = x + y > 0
 num_logic_sum = as.numeric(logic_sum)
 fac_logic_sum = as.factor(logic_sum)
+
+prob2_df = tibble(x, y, logic_sum, num_logic_sum, fac_logic_sum)
 ```
+
+
 
