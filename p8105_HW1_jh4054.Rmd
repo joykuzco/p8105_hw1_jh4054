@@ -5,54 +5,70 @@ date: "9/19/2018"
 output: github_document
 ---
 
-This R markdown document will is for Data Science P8105 - Homework 1
-```{r}
+This R markdown document is for Data Science P8105 - Homework 1
+```{r chunk_tidyverse}
 #Load tidyverse package
 library(tidyverse)
 ```
 
 #Problem 1
 
-* Create a data frame comprised of 4 variables
+The first objective is to create a data frame comprised of 4 variables
 
+To start, I created four vectors:
+* A random sample of size 10 from a uniform[0, 5] distribution
+* A logical vector indicating whether elements of the sample are greater than 2
+* A (length-10) character vector
+* A (length-10) factor vector
 ```{r}
-#set seed for random number generator
+#set seed to ensure reproducibility 
 set.seed(5)
 
-#create dataframe with tibble package
-vector_df = tibble(
-  vec_numeric = runif(10,0,5),
-  vec_logic = vec_numeric > 2,
-  vec_char = c("apples", "banana", "orange", "grapes", "berry", "pear", "grapefruit", "mango", "peach", "durian"),
-  vec_factor = factor(c("hairy", "bald", "hairy", "hairy", "bald", "hairy", "hairy", "bald", "hairy", "bald"))
-)
-
-vector_df
-```
-###Explore means
-* Mean of numeric vector  
-```{r}
-mean(vector_df$vec_numeric)
+#create four variable types
+vec_num = runif(10, 0, 5)
+vec_log = vec_num > 2
+vec_char = c("there", "is", "an", "alien", "hiding", "behind", "the", "black", "berry", "tree")
+vec_fac = factor(c("alien", "platypus", "alien", "platypus", "alien", "platypus", "platypus", "platypus", "platypus", "platypus"))
 ```
 
-* Mean of logic vector
+Using the "tibble" function, I bounded the four variables in a dataframe. 
 ```{r}
-mean(vector_df$vec_logic)
+#create data frame
+prob1_df = tibble(vec_num, vec_log, vec_char, vec_fac)
 ```
 
-* Mean of character vector does not work 
-```{r}
-mean(vector_df$vec_char)
-```
-    
-* Mean of factor vector does not work  
-```{r}
-mean(vector_df$vec_factor)
+The mean function will only work for some of the variables. The mean function works for the numeric variable since the inputs are already numeric. The mean function works for the logical vector since the outputs "TRUE" and "FALSE" are coded as numeric values 0 and 1, respectively. The character vector "vec_char" and factor vector "vec_fact" have categorical variables which cannot be averaged numerically.
+
+```{r, message = F, warning = F}
+#take the mean of numeric vector
+mean(vec_num)
+
+#take the mean of logical vector
+mean(vec_log)
+
+#take the mean of charactor vector
+mean(vec_char)
+
+#take the mean of factor vector
+mean(vec_fac)
 ```
 
-###Convert variables to numeric values
+We can convert the character "vec_char" and factor variables "vec_factor" into numeric variables using the "as.numeric" function
 ```{r}
-as.numeric(vector_df$vec_char)
-as.numeric(vector_df$vec_factor)
+num_vec_log = as.numeric(vec_log)
+num_vec_char = as.numeric(vec_char)
+num_vec_fac = as.numeric(vec_fac)
+```
+
+
+In a second code chunk, convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. What happens?
+```{r}
+char_fac_num = as.numeric(as.factor(vec_char))
+fac_char_num = as.numeric(as.character(vec_fac))
+```
+
+#Problem 2
+```{r}
+x = rnorm(1000)
 ```
 
