@@ -74,6 +74,7 @@ fac_char_num = as.numeric(as.character(vec_fac))
 ```
 
 #Problem 2
+
 First, we will create a data frame `prob2_df` 
 
 The size of dataset `prob2_df` is described by `dim(prob2_df)`, which means that the dimension of the dataframe is 1000 length by 5 vectors.
