@@ -68,8 +68,10 @@ fac_char_num = as.numeric(as.character(vec_fac))
 ```
 
 #Problem 2
-First, we will create a data frame `r prob2_df` 
+First, we will create a data frame `prob2_df` 
 ```{r}
+set.seed(50)
+
 x = rnorm(1000)
 y = rnorm(1000)
 logic_sum = x + y > 0
@@ -79,5 +81,8 @@ fac_logic_sum = as.factor(logic_sum)
 prob2_df = tibble(x, y, logic_sum, num_logic_sum, fac_logic_sum)
 ```
 
-
+The size of dataset `prob2_df` is described by `dim(prob2_df)`, which means that the dimension of the dataframe is 1000 length by 5 vectors.
+The mean of `x` is `mean(x)`.
+the median of `x` is `median(x)`.
+The proportion of cases in which the logical vector is true can be described by `sum(logic_sum, na.rm=TRUE)`, 
 
